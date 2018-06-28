@@ -1,10 +1,13 @@
 package com.springcourse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class Administrador {
 
 	private int idAd;
 	private String nombre;
 
+	@Autowired
 	private Direccion direccion;
 
 	public Administrador(){
