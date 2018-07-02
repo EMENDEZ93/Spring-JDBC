@@ -1,6 +1,7 @@
 package com.springcourse.dao;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -86,9 +87,11 @@ public class AdminDaoImplement implements AdminDao {
 		return jdbcTemplate.update("delete from admin where idAd=:idAd", new MapSqlParameterSource("idAd", idAd)) ==1;
 	}
 
+	@Transactional
 	@Override
 	public int[] saveAll(List<Admin> admins) {
 		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(admins.toArray()); 
+		
 		return jdbcTemplate.batchUpdate("insert into admin (nombre, cargo, fechaCreacion) values (:nombre, :cargo, :fechaCreacion)",
 				batchArgs);
 	}
