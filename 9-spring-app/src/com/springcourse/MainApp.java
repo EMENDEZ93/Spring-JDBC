@@ -27,16 +27,17 @@ public class MainApp {
 		admin.setFechaCreacion(time);	
 		
 		try {			
-			adminDao.save(admin);
+			//adminDao.save(admin);
 			
-			//List<Admin> admins = adminDao.
+			//List<Admin> admins = adminDao.findAll();
+			//System.out.println("********************************");
+			//for (Admin admin2 : adminDao.findAll()) {
+			//System.out.println(admin2);
+			//}
 			
-			List<Admin> admins = adminDao.findAll();
-			
-			System.out.println("********************************");
-			for (Admin admin2 : admins) {
-				System.out.println(admin2);
-			}
+			System.out.println("********************************");		
+			System.out.println(adminDao.finById(1));
+			System.out.println(adminDao.findByNombre("E").toString());
 			
 		} catch (CannotGetJdbcConnectionException ex) {
 			ex.printStackTrace();
